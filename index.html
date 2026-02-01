@@ -38,12 +38,15 @@
       overflow:hidden;
     }
 
-    .wrap{
-      min-height:100%;
-      display:grid;
-      place-items:center;
-      padding:22px;
-    }
+.wrap{
+  min-height: 100vh;          /* full viewport height */
+  width: 100%;
+  display: flex;               /* hard center */
+  align-items: center;         /* vertical center */
+  justify-content: center;     /* horizontal center */
+  padding: 22px;               /* safe padding for small screens */
+}
+
 
     .shell{
       width:min(940px, 100%);
