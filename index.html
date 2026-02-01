@@ -26,31 +26,24 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-body{ overflow-x: hidden; }
-@media (max-width: 900px){
-  body{ overflow:auto; }
-  .wrap{ align-items: flex-start; padding-top: 22px; } /* optional mobile comfort */
-}
+    body{ overflow-x: hidden; }
+    @media (max-width: 900px){
+      body{ overflow:auto; }
+      .wrap{ align-items: flex-start; padding-top: 22px; } /* optional mobile comfort */
+    }
 
-
-.wrap{
-  min-height: 100vh;          /* full viewport height */
-  width: 100%;
-  display: flex;               /* hard center */
-  align-items: center;         /* vertical center */
-  justify-content: center;     /* horizontal center */
-  padding: 22px;               /* safe padding for small screens */
-}
-
+    
+    .wrap{
+      min-height: 100vh;          /* full viewport height */
+      width: 100%;
+      display: flex;               /* hard center */
+      align-items: center;         /* vertical center */
+      justify-content: center;     /* horizontal center */
+      padding: 22px;               /* safe padding for small screens */
+    }
 
     .shell{
-      width:min(940px, 100%);
-      border:1px solid var(--stroke);
-      border-radius: var(--r);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
+      margin: 0 auto;              /* keep it centered */
     }
 
     .topbar{
