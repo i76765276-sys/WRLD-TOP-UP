@@ -3,373 +3,96 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WRLD Top Up — Under Development</title>
-  <meta name="description" content="WRLD Top Up is currently under development." />
+  <title>Under Development</title>
   <style>
     :root{
       --bg0:#070A12;
       --bg1:#0B1020;
-      --card: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.14);
       --text:#EAF0FF;
-      --muted: rgba(234,240,255,.70);
-      --brand:#6D5EF7;
-      --brand2:#38BDF8;
-      --good:#22C55E;
-      --warn:#F59E0B;
-      --bad:#EF4444;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --r: 22px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --muted:rgba(234,240,255,.72);
+      --stroke:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:22px;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{ overflow-x: hidden; }
-    @media (max-width: 900px){
-      body{ overflow:auto; }
-      .wrap{ align-items: flex-start; padding-top: 22px; } /* optional mobile comfort */
-    }
-
-    
-    .wrap{
-      min-height: 100vh;          /* full viewport height */
-      width: 100%;
-      display: flex;               /* hard center */
-      align-items: center;         /* vertical center */
-      justify-content: center;     /* horizontal center */
-      padding: 22px;               /* safe padding for small screens */
-    }
-
-    .shell{
-      margin: 0 auto;              /* keep it centered */
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:16px 18px;
-      border-bottom:1px solid var(--stroke);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-    .logo{
-      width:42px;height:42px;border-radius:14px;
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 38%),
-        linear-gradient(135deg, rgba(109,94,247,.95), rgba(56,189,248,.85));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 12px 26px rgba(109,94,247,.22);
-      flex:0 0 auto;
-    }
-    .brandText{min-width:0}
-    .brandTitle{
-      font-weight:860;
-      letter-spacing:.2px;
-      white-space:nowrap;
+        radial-gradient(1100px 720px at 12% 10%, rgba(109,94,247,.22), transparent 58%),
+        radial-gradient(900px 680px at 90% 18%, rgba(56,189,248,.16), transparent 55%),
+        radial-gradient(900px 700px at 55% 110%, rgba(34,197,94,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow:hidden;
-      text-overflow:ellipsis;
-      line-height:1.05;
-    }
-    .brandSub{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
     }
 
-    .statusPill{
-      display:flex;align-items:center;gap:10px;
-      padding:10px 12px;
+    .card{
+      width:min(720px, 100%);
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      padding:28px 26px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width:360px;height:360px;
       border-radius:999px;
-      border:1px solid var(--stroke2);
-      background: rgba(0,0,0,.22);
-      font-size:13px;
-      color:var(--muted);
-      user-select:none;
-      white-space:nowrap;
-    }
-    .dot{
-      width:9px;height:9px;border-radius:999px;
-      background: var(--warn);
-      box-shadow: 0 0 0 4px rgba(245,158,11,.14);
-    }
-
-    .main{
-      padding:24px 20px 20px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-    }
-    @media (max-width: 900px){
-      body{overflow:auto}
-      .main{grid-template-columns:1fr}
-    }
-
-    .hero{
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.18);
-      border-radius: 20px;
-      padding:18px;
-    }
-
-    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size:12px;
-    }
-    .kbd{
-      font-family:var(--mono);
-      font-size:12px;
-      border:1px solid rgba(255,255,255,.16);
-      padding:2px 8px;border-radius:10px;
-      background: rgba(0,0,0,.28);
-      color: rgba(234,240,255,.88);
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,.12), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(109,94,247,.22), transparent 60%),
+        radial-gradient(circle at 55% 60%, rgba(56,189,248,.16), transparent 60%);
+      opacity:.9;
+      filter: blur(0px);
+      pointer-events:none;
     }
 
     h1{
       margin:0;
-      font-size:34px;
-      line-height:1.08;
+      font-size:40px;
       letter-spacing:.2px;
       font-weight:920;
+      line-height:1.12;
+      text-transform: none;
     }
-    .lead{
-      margin-top:10px;
-      color: var(--muted);
+
+    .sub{
+      margin-top:12px;
+      font-size:14px;
+      color:var(--muted);
       line-height:1.6;
-      font-size:14px;
-      max-width: 60ch;
     }
 
-    .ctaRow{
-      margin-top:16px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .btn{
-      cursor:pointer;
-      border:1px solid var(--stroke2);
-      background: rgba(255,255,255,.05);
-      color:var(--text);
-      padding:11px 14px;
-      border-radius: 14px;
-      font-size:13px;
-      font-weight:760;
-      display:inline-flex;align-items:center;gap:9px;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
-      text-decoration:none;
-      user-select:none;
-    }
-    .btn:hover{background: rgba(255,255,255,.08);border-color: rgba(255,255,255,.18)}
-    .btn:active{transform: translateY(1px)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(109,94,247,.96), rgba(56,189,248,.86));
-      border-color: rgba(255,255,255,.22);
-    }
-    .btn.ghost{background: transparent}
-    .btn[disabled]{opacity:.55;cursor:not-allowed}
-
-    .side{
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.18);
-      border-radius: 20px;
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      min-height: 100%;
-    }
-    .side h2{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.2px;
-      font-weight:860;
-    }
-    .side .muted{
-      color: var(--muted);
-      font-size:12.5px;
-      line-height:1.55;
+    .line{
+      width:84px;height:1px;
+      background:rgba(255,255,255,.16);
+      margin:18px auto 0;
     }
 
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      margin-top:4px;
+    @media (max-width:520px){
+      .card{padding:22px 18px}
+      h1{font-size:30px}
     }
-    .input{
-      width:100%;
-      border:1px solid var(--stroke2);
-      background: rgba(0,0,0,.25);
-      color:var(--text);
-      border-radius: 14px;
-      padding: 11px 12px;
-      font-size: 13px;
-      outline:none;
-    }
-
-    .footer{
-      padding:14px 18px;
-      border-top:1px solid var(--stroke);
-      color: rgba(234,240,255,.55);
-      font-size:12px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    /* Subtle animated "orb" */
-    .orb{
-      position:absolute;
-      width:420px;height:420px;
-      border-radius:999px;
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.12), transparent 45%),
-                  radial-gradient(circle at 50% 50%, rgba(109,94,247,.22), transparent 60%),
-                  radial-gradient(circle at 55% 60%, rgba(56,189,248,.16), transparent 60%);
-      filter: blur(0px);
-      top:-210px;right:-210px;
-      opacity:.85;
-      animation: float 7.5s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes float{
-      0%{transform: translate(0,0) scale(1)}
-      50%{transform: translate(-18px, 22px) scale(1.02)}
-      100%{transform: translate(0,0) scale(1)}
-    }
-
-    .toast{
-      position:fixed;
-      left:22px;right:22px;bottom:18px;
-      max-width:720px;margin:0 auto;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid var(--stroke2);
-      background: rgba(16,27,58,.72);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
-      display:none;
-      z-index:50;
-    }
-    .toast.show{display:block}
-    .toast .t{font-weight:860}
-    .toast .d{margin-top:3px;color:var(--muted);font-size:12px}
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="shell">
-      <div class="orb"></div>
-
-      <div class="topbar">
-        <div class="brand">
-          <div class="logo"></div>
-          <div class="brandText">
-            <div class="brandTitle">WRLD Top Up</div>
-            <div class="brandSub">Dashboard + Bot Panel • Currently building</div>
-          </div>
-        </div>
-
-        <div class="statusPill" title="Current status">
-          <span class="dot"></span>
-          <span>UNDER DEVELOPMENT</span>
-        </div>
-      </div>
-
-      <div class="main">
-        <section class="hero">
-          <div class="badgeRow">
-            <span class="badge">⚙️ Maintenance Mode</span>
-            <span class="badge">🧩 New Features Shipping</span>
-            <span class="badge">🔒 Secure Keys + Sync</span>
-          </div>
-
-          <h1>We’re upgrading the whole system.</h1>
-          <div class="lead">
-            WRLD Top Up is currently <b>under development</b>. The dashboard, bulk tools, and syncing are being rebuilt for speed,
-            safety, and a cleaner experience.
-            <br /><br />
-            You can still check backend status below or join the Discord for updates.
-          </div>
-
-          <div class="ctaRow">
-            <!-- Put your real discord invite here -->
-            <a class="btn primary" href="https://discord.gg/wrldent" target="_blank" rel="noreferrer">
-              💬 Join Discord
-            </a>
-
-            <!-- This checks /health if you have it -->
-            <button class="btn" onclick="checkStatus()">
-              🛰️ Check Status
-            </button>
-
-            <a class="btn ghost" href="#" onclick="copyLink();return false;">
-              🔗 Copy Site Link
-            </a>
-          </div>
-        </section>
-    </div>
-  </div>
-
-  <div class="toast" id="toast">
-    <div class="t" id="toastT">Title</div>
-    <div class="d" id="toastD">Detail</div>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function showToast(title, detail){
-      document.getElementById("toastT").textContent = title || "";
-      document.getElementById("toastD").textContent = detail || "";
-      const t = document.getElementById("toast");
-      t.classList.add("show");
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => t.classList.remove("show"), 4200);
-    }
-
-    async function checkStatus(){
-      const custom = (document.getElementById("statusUrl").value || "").trim();
-      const url = custom || "/health";
-
-      showToast("Checking status…", url);
-
-      try{
-        const res = await fetch(url, { method:"GET" });
-        const text = await res.text().catch(()=> "");
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        showToast("Backend is UP ✅", text ? text.slice(0, 160) : "Health check passed.");
-      }catch(e){
-        showToast("Backend is DOWN ❌", e.message || "Failed to reach health endpoint.");
-      }
-    }
-
-    function copyLink(){
-      const link = location.href;
-      navigator.clipboard?.writeText(link)
-        .then(()=> showToast("Copied ✅", "Link copied to clipboard."))
-        .catch(()=> showToast("Copy failed", "Your browser blocked clipboard access."));
-    }
-  </script>
+  <main class="card" role="main" aria-label="Under development notice">
+    <h1>This site is under development.</h1>
+    <div class="line"></div>
+    <p class="sub">Please check back soon.</p>
+  </main>
 </body>
 </html>
